@@ -27,13 +27,15 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    // Felhasználó törlése ID alapján
-    public void deleteUser(Long userId) {
-        userRepository.deleteById(userId);
+    // Felhasználó törlése username alapján
+    public void deleteUser(String username) {
+        userRepository.deleteById(username);
     }
 
     // Minden felhasználó lekérdezése
     public Iterable<User> getAllUsers() {
         return userRepository.findAll();
     }
+
+
 }
