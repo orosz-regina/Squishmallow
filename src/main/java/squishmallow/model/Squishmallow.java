@@ -3,7 +3,7 @@ package squishmallow.model;
 import jakarta.persistence.*;
         import lombok.Data;
 
-@Entity
+@Entity(name = "Squishmallow")
 @Data
 public class Squishmallow {
     @Id

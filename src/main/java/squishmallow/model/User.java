@@ -1,22 +1,22 @@
 package squishmallow.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import lombok.Data;
 import jakarta.persistence.*;
+import lombok.Data;
+import java.time.LocalDateTime;
 
-import java.time.OffsetDateTime;
-@Entity
+@Entity(name = "App_user")
 @Data
 public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
-    private String username;
+
+    @Column(unique = true)  // biztosítja, hogy az email csak egyszer szerepelhet
     private String email;
-    private String password;
-    private OffsetDateTime createdAt;
 
+    @Id
+    @Column(unique = true)  // biztosítja, hogy a username csak egyszer szerepelhet
+    private String username;
+
+    private String password;
+
+    private LocalDateTime createdAt;
 }

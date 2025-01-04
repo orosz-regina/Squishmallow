@@ -27,9 +27,9 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    // Felhasználó törlése username alapján
+    // Felhasználó törlése id alapján
     public void deleteUser(String username) {
-        userRepository.deleteById(username);
+        userRepository.deleteByUsername(username);
     }
 
     // Minden felhasználó lekérdezése

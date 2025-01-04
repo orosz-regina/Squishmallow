@@ -1,0 +1,180 @@
+2025-01-03 16:53:08.914911+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "drop table if exists [*]user cascade "; expected "identifier"; SQL statement:
+drop table if exists user cascade  [42001-232]
+2025-01-03 16:53:08.930028+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table [*]user (created_at timestamp(6) with time zone, email varchar(255), password varchar(255), username varchar(255) not null, primary key (username))"; expected "identifier"; SQL statement:
+create table user (created_at timestamp(6) with time zone, email varchar(255), password varchar(255), username varchar(255) not null, primary key (username)) [42001-232]
+2025-01-03 16:53:08.943209+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "alter table if exists user_collection add constraint FKshern7tuf2w1689svq1fm88sw foreign key (user_id) references [*]user"; expected "identifier"; SQL statement:
+alter table if exists user_collection add constraint FKshern7tuf2w1689svq1fm88sw foreign key (user_id) references user [42001-232]
+2025-01-03 17:00:39.360478+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "drop table if exists [*]user cascade "; expected "identifier"; SQL statement:
+drop table if exists user cascade  [42001-232]
+2025-01-03 17:00:39.372379+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table [*]user (created_at timestamp(6) with time zone, email varchar(255), password varchar(255), username varchar(255) not null, primary key (username))"; expected "identifier"; SQL statement:
+create table user (created_at timestamp(6) with time zone, email varchar(255), password varchar(255), username varchar(255) not null, primary key (username)) [42001-232]
+2025-01-03 17:00:39.383644+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "alter table if exists user_collection add constraint FKshern7tuf2w1689svq1fm88sw foreign key (user_id) references [*]user"; expected "identifier"; SQL statement:
+alter table if exists user_collection add constraint FKshern7tuf2w1689svq1fm88sw foreign key (user_id) references user [42001-232]
+2025-01-03 17:01:52.485972+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE IF NOT EXISTS [*]user (\000d\000a    username VARCHAR(255) PRIMARY KEY,\000d\000a    email VARCHAR(255),\000d\000a    password VARCHAR(255),\000d\000a    created_at TIMESTAMP\000d\000a)"; expected "identifier"; SQL statement:
+CREATE TABLE IF NOT EXISTS user (
+    username VARCHAR(255) PRIMARY KEY,
+    email VARCHAR(255),
+    password VARCHAR(255),
+    created_at TIMESTAMP
+) [42001-232]
+2025-01-03 17:02:28.161027+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE [*]user (\000d\000a    username VARCHAR(255) PRIMARY KEY,\000d\000a    email VARCHAR(255),\000d\000a    password VARCHAR(255),\000d\000a    created_at TIMESTAMP\000d\000a)"; expected "identifier"; SQL statement:
+CREATE TABLE user (
+    username VARCHAR(255) PRIMARY KEY,
+    email VARCHAR(255),
+    password VARCHAR(255),
+    created_at TIMESTAMP
+) [42001-232]
+2025-01-03 17:04:02.535871+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "CREATE TABLE [*]user (\000d\000a    username VARCHAR(255) PRIMARY KEY,\000d\000a    email VARCHAR(255),\000d\000a    password VARCHAR(255),\000d\000a    created_at TIMESTAMP\000d\000a)"; expected "identifier"; SQL statement:
+CREATE TABLE user (
+    username VARCHAR(255) PRIMARY KEY,
+    email VARCHAR(255),
+    password VARCHAR(255),
+    created_at TIMESTAMP
+) [42001-232]
+2025-01-03 17:04:36.130673+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "drop table if exists [*]user cascade "; expected "identifier"; SQL statement:
+drop table if exists user cascade  [42001-232]
+2025-01-03 17:04:36.143412+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table [*]user (created_at timestamp(6) with time zone, email varchar(255), password varchar(255), username varchar(255) not null, primary key (username))"; expected "identifier"; SQL statement:
+create table user (created_at timestamp(6) with time zone, email varchar(255), password varchar(255), username varchar(255) not null, primary key (username)) [42001-232]
+2025-01-03 17:04:36.155828+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "alter table if exists user_collection add constraint FKshern7tuf2w1689svq1fm88sw foreign key (user_id) references [*]user"; expected "identifier"; SQL statement:
+alter table if exists user_collection add constraint FKshern7tuf2w1689svq1fm88sw foreign key (user_id) references user [42001-232]
+2025-01-03 17:08:02.817384+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "drop table if exists [*]user cascade "; expected "identifier"; SQL statement:
+drop table if exists user cascade  [42001-232]
+2025-01-03 17:08:02.830247+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "create table [*]user (created_at timestamp(6), email varchar(255), password varchar(255), username varchar(255) not null, primary key (username))"; expected "identifier"; SQL statement:
+create table user (created_at timestamp(6), email varchar(255), password varchar(255), username varchar(255) not null, primary key (username)) [42001-232]
+2025-01-03 17:08:02.843247+01:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "alter table if exists user_collection add constraint FKshern7tuf2w1689svq1fm88sw foreign key (user_id) references [*]user"; expected "identifier"; SQL statement:
+alter table if exists user_collection add constraint FKshern7tuf2w1689svq1fm88sw foreign key (user_id) references user [42001-232]
+2025-01-04 14:06:07.774586+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Column "CREATED_AT" not found; SQL statement:
+INSERT INTO SQUISHMALLOW (name, type, size, created_at) VALUES
+('Cam', 'Cat', 12, CURRENT_TIMESTAMP),
+('Fifi', 'Fox', 16, CURRENT_TIMESTAMP),
+('Wendy', 'Frog', 'clip-on', CURRENT_TIMESTAMP),
+('Avery', 'Duck', 'micromallow', CURRENT_TIMESTAMP),
+('Mila', 'Elephant', 20, CURRENT_TIMESTAMP),
+('Sunny', 'Bee', 'clip-on', CURRENT_TIMESTAMP),
+('Gregory', 'Goat', 8, CURRENT_TIMESTAMP),
+('Stacy', 'Squid', 5, CURRENT_TIMESTAMP),
+('Archie', 'Axolotl', 'micromallow', CURRENT_TIMESTAMP),
+('Benny', 'Cow', 14, CURRENT_TIMESTAMP) [42122-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.table.Table.getColumn(Table.java:786)
+	at org.h2.command.Parser.parseColumn(Parser.java:1171)
+	at org.h2.command.Parser.parseColumnList(Parser.java:1156)
+	at org.h2.command.Parser.parseInsert(Parser.java:1530)
+	at org.h2.command.Parser.parsePrepared(Parser.java:698)
+	at org.h2.command.Parser.parse(Parser.java:581)
+	at org.h2.command.Parser.parse(Parser.java:556)
+	at org.h2.command.Parser.prepareCommand(Parser.java:484)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:645)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:561)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1164)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:245)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:231)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1344)
+	at org.h2.server.web.WebApp.query(WebApp.java:1142)
+	at org.h2.server.web.WebApp.query(WebApp.java:1118)
+	at org.h2.server.web.WebApp.process(WebApp.java:244)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:176)
+	at org.h2.server.web.JakartaWebServlet.doGet(JakartaWebServlet.java:129)
+	at org.h2.server.web.JakartaWebServlet.doPost(JakartaWebServlet.java:166)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1575)
+2025-01-04 14:15:57.199142+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "('Amelie',Strawberry Milk','7.5','Food')\000d\000a('Arnel','Popcorn','7','Food')\000d\000a('Bliss','Polar Bear','4','Small')\000d\000a('Caedia','Cow','8','Valentines 2024')\000d\000a('Cam','Cat','3','Monopoly')\000d\000a('Celenia','Cat','8','Classic[*]')"; SQL statement:
+('Amelie',Strawberry Milk','7.5','Food')
+('Arnel','Popcorn','7','Food')
+('Bliss','Polar Bear','4','Small')
+('Caedia','Cow','8','Valentines 2024')
+('Cam','Cat','3','Monopoly')
+('Celenia','Cat','8','Classic') [42000-232]
+2025-01-04 14:16:12.508074+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "([*]'Amelie','Strawberry Milk','7.5','Food')\000d\000a('Arnel','Popcorn','7','Food')\000d\000a('Bliss','Polar Bear','4','Small')\000d\000a('Caedia','Cow','8','Valentines 2024')\000d\000a('Cam','Cat','3','Monopoly')\000d\000a('Celenia','Cat','8','Classic')"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Amelie','Strawberry Milk','7.5','Food')
+('Arnel','Popcorn','7','Food')
+('Bliss','Polar Bear','4','Small')
+('Caedia','Cow','8','Valentines 2024')
+('Cam','Cat','3','Monopoly')
+('Celenia','Cat','8','Classic') [42001-232]
+2025-01-04 14:16:29.939524+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "([*]'Amelie','Strawberry Milk','7.5','Food')"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Amelie','Strawberry Milk','7.5','Food') [42001-232]
+2025-01-04 14:16:29.941538+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "([*]'Arnel','Popcorn','7','Food')"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Arnel','Popcorn','7','Food') [42001-232]
+2025-01-04 14:16:29.942537+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "([*]'Bliss','Polar Bear','4','Small')"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Bliss','Polar Bear','4','Small') [42001-232]
+2025-01-04 14:16:29.944537+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "([*]'Caedia','Cow','8','Valentines 2024')"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Caedia','Cow','8','Valentines 2024') [42001-232]
+2025-01-04 14:16:29.946537+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "([*]'Cam','Cat','3','Monopoly')"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Cam','Cat','3','Monopoly') [42001-232]
+2025-01-04 14:16:29.948637+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "([*]'Celenia','Cat','8','Classic')"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Celenia','Cat','8','Classic') [42001-232]
+2025-01-04 14:16:51.009122+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "([*]'Amelie','Strawberry Milk','7.5','Food'),\000d\000a('Arnel','Popcorn','7','Food'),\000d\000a('Bliss','Polar Bear','4','Small'),\000d\000a('Caedia','Cow','8','Valentines 2024'),\000d\000a('Cam','Cat','3','Monopoly'),\000d\000a('Celenia','Cat','8','Classic'),"; expected "(, SELECT, TABLE, VALUES"; SQL statement:
+('Amelie','Strawberry Milk','7.5','Food'),
+('Arnel','Popcorn','7','Food'),
+('Bliss','Polar Bear','4','Small'),
+('Caedia','Cow','8','Valentines 2024'),
+('Cam','Cat','3','Monopoly'),
+('Celenia','Cat','8','Classic'), [42001-232]
+2025-01-04 14:20:21.981672+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]SQUISHMALLOW"; expected "SAVEPOINT, SCRIPT, SHUTDOWN"; SQL statement:
+SQUISHMALLOW [42001-232]
+2025-01-04 14:20:25.432926+01:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]SQUISHMALLOW"; expected "SAVEPOINT, SCRIPT, SHUTDOWN"; SQL statement:
+SQUISHMALLOW [42001-232]

@@ -1,11 +1,12 @@
 package squishmallow.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.time.OffsetDateTime;
 
-@Entity
-@Table(name = "user_collection")
+@Entity(name = "UserCollection")
+@Data
 public class UserCollection {
 
     @Id

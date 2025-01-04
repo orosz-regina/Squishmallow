@@ -8,7 +8,6 @@
         <version>3.4.1</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>org.example</groupId>
     <artifactId>Squishmallow</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Squishmallow</name>
@@ -28,6 +27,7 @@
     </scm>
     <properties>
         <java.version>17</java.version>
+        <start-class>squishmallow.SquishmallowApplication</start-class>
     </properties>
     <dependencies>
         <dependency>
@@ -57,10 +57,6 @@
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
     </dependencies>
 
