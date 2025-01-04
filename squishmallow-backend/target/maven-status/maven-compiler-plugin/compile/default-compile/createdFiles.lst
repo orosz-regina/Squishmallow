@@ -1,5 +1,4 @@
 squishmallow\controller\SquishmallowController.class
-squishmallow\config\WebConfig.class
 squishmallow\model\Squishmallow.class
 squishmallow\controller\UserController.class
 squishmallow\SquishmallowApplication$WebConfiguration.class
