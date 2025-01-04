@@ -1,0 +1,15 @@
+squishmallow\controller\SquishmallowController.class
+squishmallow\config\WebConfig.class
+squishmallow\model\Squishmallow.class
+squishmallow\controller\UserController.class
+squishmallow\SquishmallowApplication$WebConfiguration.class
+squishmallow\repository\SquishmallowRepository.class
+squishmallow\repository\UserCollectionRepository.class
+squishmallow\controller\UserCollectionController.class
+squishmallow\service\UserCollectionService.class
+squishmallow\service\UserService.class
+squishmallow\model\UserCollection.class
+squishmallow\SquishmallowApplication.class
+squishmallow\repository\UserRepository.class
+squishmallow\service\SquishmallowService.class
+squishmallow\model\User.class

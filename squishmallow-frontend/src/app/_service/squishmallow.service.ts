@@ -1,0 +1,33 @@
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class SquishmallowService {
+
+  private apiUrl = 'http://localhost:8080/squishmallows'; // Az API URL
+
+  constructor(private http: HttpClient) { }
+
+  // Squishmallowok listázása
+  getSquishmallows(): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
+  }
+
+  // Egy Squishmallow lekérése ID alapján
+  getSquishmallowById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
+  }
+
+  // Squishmallow hozzáadása
+  addSquishmallow(squishmallow: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl, squishmallow);
+  }
+
+  // Squishmallow törlése
+  deleteSquishmallow(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/${id}`);
+  }
+}
