@@ -46,4 +46,15 @@ public class SquishmallowController {
         squishmallowService.deleteSquishmallow(id);
         return ResponseEntity.noContent().build();
     }
+
+    public SquishmallowService getSquishmallowService() {
+        return squishmallowService;
+    }
+
+    @GetMapping("/check-usercollection/{id}")
+    public ResponseEntity<Boolean> checkIfSquishmallowInUserCollection(@PathVariable Long id) {
+        boolean exists = squishmallowService.isSquishmallowInUserCollection(id);
+        return ResponseEntity.ok(exists);
+    }
+
 }

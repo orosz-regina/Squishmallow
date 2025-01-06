@@ -37,4 +37,5 @@ public class UserCollectionController {
         userCollectionService.deleteUserCollection(id);
         return ResponseEntity.noContent().build();
     }
+
 }

@@ -30,4 +30,9 @@ export class SquishmallowService {
   deleteSquishmallow(id: number): Observable<any> {
     return this.http.delete<any>(`${this.apiUrl}/${id}`);
   }
+
+  // Ellenőrizzük, hogy a squishmallow szerepel-e a userCollection-ben
+  checkUserCollection(squishmallowId: number): Observable<{ exists: boolean }> {
+    return this.http.get<{ exists: boolean }>(`${this.apiUrl}/check-usercollection/${squishmallowId}`);
+  }
 }

@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserCollectionRepository extends JpaRepository<UserCollection, Long> {
+    boolean existsBySquishmallowId(Long squishmallow_id);
 }

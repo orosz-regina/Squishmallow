@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';  // Importáld a RouterModule-t
-import { SquishmallowListComponent } from './_component/squishmallow-list/squishmallow-list.component';
+import { SquishmallowListComponent } from './_component/squishmallow/squishmallow-list/squishmallow-list.component';
 
 @Component({
   selector: 'app-root',
