@@ -1,37 +1,87 @@
 <div class="container-fluid">
   <div class="card my-2">
+    <!-- Új Squishmallow hozzáadása -->
     <div class="card-header bg-primary text-white text-center">
-      Squishmallow List
+      Squishmallow
     </div>
-    <div class="card-body p-0">
-      <div class="table-responsive">
-        <table class="table table-striped table-hover w-100">
-          <thead class="table-dark">
-          <tr>
-            <th scope="col" style="width: 5%;">#</th>
-            <th scope="col" style="width: 20%;">Name</th>
-            <th scope="col" style="width: 15%; text-align: center;">Type</th>
-            <th scope="col" style="width: 20%; text-align: center;">Category</th>
-            <th scope="col" style="width: 15%; text-align: center;">Size</th>
-            <th scope="col" style="width: 25%; text-align: center;">Tools</th>
-          </tr>
-          </thead>
-          <tbody>
-          <tr *ngFor="let squishmallow of squishmallows; let squishmallowIndex = index">
-            <th scope="row">#{{ squishmallowIndex + 1 }}</th>
-            <td><code class="badge text-bg-dark">{{ squishmallow.name }}</code></td>
-            <td class="text-center">{{ squishmallow.type }}</td>
-            <td class="text-center">{{ squishmallow.category }}</td>
-            <td class="text-center">{{ squishmallow.size }}</td>
-            <td class="text-center">
-              <button class="btn btn-outline-danger" (click)="deleteSquishmallow(squishmallow.id)">
-                Delete
-              </button>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
+    <div class="card-body">
+      <form (ngSubmit)="addSquishmallow()">
+        <div class="row g-2">
+          <div class="col-md-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Name"
+              [(ngModel)]="newSquishmallow.name"
+              name="name"
+              required
+            />
+          </div>
+          <div class="col-md-2">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Type"
+              [(ngModel)]="newSquishmallow.type"
+              name="type"
+              required
+            />
+          </div>
+          <div class="col-md-3">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Category"
+              [(ngModel)]="newSquishmallow.category"
+              name="category"
+              required
+            />
+          </div>
+          <div class="col-md-2">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Size"
+              [(ngModel)]="newSquishmallow.size"
+              name="size"
+              required
+            />
+          </div>
+          <div class="col-md-2">
+            <button type="submit" class="btn btn-success w-100" >Add</button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Squishmallow lista -->
+    <div class="table-responsive">
+      <table class="table table-striped table-hover w-100">
+        <thead class="table-dark">
+        <tr>
+          <th scope="col" style="width: 5%;">#</th>
+          <th scope="col" style="width: 20%;">Name</th>
+          <th scope="col" style="width: 15%; text-align: center;">Type</th>
+          <th scope="col" style="width: 20%; text-align: center;">Category</th>
+          <th scope="col" style="width: 15%; text-align: center;">Size</th>
+          <th scope="col" style="width: 25%; text-align: center;">Tools</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let squishmallow of squishmallows; let squishmallowIndex = index">
+          <th scope="row">#{{ squishmallowIndex + 1 }}</th>
+          <td><code class="badge text-bg-dark">{{ squishmallow.name }}</code></td>
+          <td class="text-center">{{ squishmallow.type }}</td>
+          <td class="text-center">{{ squishmallow.category }}</td>
+          <td class="text-center">{{ squishmallow.size }}</td>
+          <td class="text-center">
+            <button class="btn btn-outline-danger" (click)="deleteSquishmallow(squishmallow.id)">
+              Delete
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

@@ -22,10 +22,18 @@ public class SquishmallowController {
 
     // Squishmallow hozzáadása
     @PostMapping
-    public ResponseEntity<Squishmallow> createSquishmallow(@RequestBody Squishmallow squishmallow) {
-        Squishmallow savedSquishmallow = squishmallowService.addSquishmallow(squishmallow);
-        return new ResponseEntity<>(savedSquishmallow, HttpStatus.CREATED);
+    public ResponseEntity<?> createSquishmallow(@RequestBody Squishmallow squishmallow) {
+        try {
+            Squishmallow savedSquishmallow = squishmallowService.addSquishmallow(squishmallow);
+            return new ResponseEntity<>(savedSquishmallow, HttpStatus.CREATED);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Hiba történt a Squishmallow hozzáadása közben: " + e.getMessage());
+        }
     }
+
+
 
     // Squishmallow keresése ID alapján
     @GetMapping("/{id}")

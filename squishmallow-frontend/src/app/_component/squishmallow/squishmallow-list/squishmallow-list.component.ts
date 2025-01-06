@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { SquishmallowService } from '../../../_service/squishmallow.service';
 import {CommonModule, NgForOf, NgIf} from '@angular/common';
 import {Observable} from 'rxjs';
+import { FormsModule } from '@angular/forms';
 import {Squishmallow} from '../../../_model/squishmallow.model';
 
 @Component({
   selector: 'app-squishmallow-list',
   templateUrl: './squishmallow-list.component.html',
   imports: [
-    NgForOf
+    NgForOf,
+    FormsModule
   ],
   styleUrls: ['./squishmallow-list.component.css']
 })
@@ -17,8 +19,10 @@ export class SquishmallowListComponent implements OnInit {
   squishmallows: any[] = [];
   private apiUrl: any;
   private http: any;
+  newSquishmallow: any = { name: '', type: '', category: '', size: '' };
 
-  constructor(private squishmallowService: SquishmallowService) { }
+  constructor(private squishmallowService: SquishmallowService) {
+  }
 
   ngOnInit() {
     // API hívás
@@ -33,7 +37,7 @@ export class SquishmallowListComponent implements OnInit {
     // Először ellenőrizzük, hogy a squishmallow szerepel-e a userCollection táblában
     this.squishmallowService.checkUserCollection(id).subscribe({
       next: (data) => {
-        console.error("Benne van: ",data);
+        console.error("Benne van: ", data);
         if (data) {
           // Ha létezik a gyűjteményben, felugró ablakot jelenítünk meg
           alert("Ez a Squishmallow már szerepel legalább egy felhasználó gyűjteményében, ezért nem törölhető.");
@@ -59,7 +63,18 @@ export class SquishmallowListComponent implements OnInit {
   }
 
 
+  addSquishmallow() {
+    this.squishmallowService.addSquishmallow(this.newSquishmallow).subscribe({
+      next: (newSquishmallow) => {
+        // Hozzáadjuk az új elemet a listához
+        this.squishmallows.push(newSquishmallow);
 
-
-
+        // Az űrlapot visszaállítjuk az alapértelmezett értékekre
+        this.newSquishmallow = {name: '', type: '', category: '', size: ''};
+      },
+      error: (err) => {
+        console.error('Failed to add squishmallow', err);
+      }
+    });
+  }
 }
