@@ -9,8 +9,8 @@ import {Squishmallow} from '../../../_model/squishmallow.model';
   selector: 'app-squishmallow-list',
   templateUrl: './squishmallow-list.component.html',
   imports: [
-    NgForOf,
-    FormsModule
+    CommonModule, // Ez tartalmazza az NgIf és NgForOf direktívákat
+    FormsModule,  // Az [(ngModel)] használatához szükséges
   ],
   styleUrls: ['./squishmallow-list.component.css']
 })
@@ -19,7 +19,23 @@ export class SquishmallowListComponent implements OnInit {
   squishmallows: any[] = [];
   private apiUrl: any;
   private http: any;
-  newSquishmallow: any = { name: '', type: '', category: '', size: '' };
+  newSquishmallow: any = {name: '', type: '', category: '', size: ''};
+  currentSquishmallow: any = null; // Aktuálisan szerkesztett Squishmallow
+  isEditing = false;
+  isModalOpen = false; // A modal állapota
+
+  openModal(squishmallow: any): void {
+    if (squishmallow) {
+      this.currentSquishmallow = {...squishmallow};  // Az aktuális squishmallow adatainak másolása
+      this.isModalOpen = true; // A modal megjelenítése
+    } else {
+      console.error('Invalid squishmallow data');
+    }
+  }
+
+  closeModal(): void {
+    this.isModalOpen = false; // A modal bezárása
+  }
 
   constructor(private squishmallowService: SquishmallowService) {
   }
@@ -73,7 +89,35 @@ export class SquishmallowListComponent implements OnInit {
         this.newSquishmallow = {name: '', type: '', category: '', size: ''};
       },
       error: (err) => {
+        // Ha a backend visszaküldte a hibaüzenetet, azt kezeljük
         console.error('Failed to add squishmallow', err);
+        alert(err.error);
+      }
+    });
+  }
+
+  editSquishmallow(squishmallow: any) {
+    console.log('Editing Squishmallow:', squishmallow); // Ellenőrző log
+    this.currentSquishmallow = {...squishmallow}; // Másolat készítése az aktuális elemről
+    this.isEditing = true; // Szerkesztési mód aktiválása
+  }
+
+  updateSquishmallow(): void {
+    // Az adatokat elküldjük a backendnek, hogy frissítse őket az adatbázisban
+    this.squishmallowService.updateSquishmallow(this.currentSquishmallow).subscribe({
+      next: (updatedSquishmallow) => {
+        // Az adatbázis frissítése után frissítsük a listát
+        const index = this.squishmallows.findIndex(sm => sm.id === this.currentSquishmallow.id);
+        if (index !== -1) {
+          this.squishmallows[index] = updatedSquishmallow; // A listában is frissítjük a squishmallow adatokat
+        }
+
+        // Bezárjuk a modált
+        this.closeModal();
+      },
+      error: (err) => {
+        console.error('Failed to update squishmallow', err);
+        alert('Hiba történt a frissítés során');
       }
     });
   }

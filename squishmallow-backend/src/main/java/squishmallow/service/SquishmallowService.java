@@ -42,17 +42,33 @@ public class SquishmallowService {
     }
 
     // Ellenőrzi, hogy a Squishmallow szerepel-e a felhasználói gyűjteményben
-    // Ellenőrzi, hogy a Squishmallow szerepel-e a felhasználói gyűjteményben
     public boolean isSquishmallowInUserCollection(Long squishmallowId) {
         try {
-            // A repository helyes hívása
-            System.out.println("Benne van-e: "+userCollectionRepository.existsBySquishmallowId(squishmallowId));
             return userCollectionRepository.existsBySquishmallowId(squishmallowId);
-
         } catch (Exception e) {
-            // Hibakezelés logja
             System.out.println("Hiba történt a felhasználói gyűjtemény ellenőrzésekor: " + e.getMessage());
             return false;
+        }
+    }
+
+    // Squishmallow frissítése
+    public Squishmallow updateSquishmallow(Long squishmallowId, Squishmallow updatedSquishmallow) {
+        Optional<Squishmallow> existingSquishmallowOptional = squishmallowRepository.findById(squishmallowId);
+
+        if (existingSquishmallowOptional.isPresent()) {
+            Squishmallow existingSquishmallow = existingSquishmallowOptional.get();
+
+            // Frissítjük az adatokat
+            existingSquishmallow.setName(updatedSquishmallow.getName());
+            existingSquishmallow.setType(updatedSquishmallow.getType());
+            existingSquishmallow.setCategory(updatedSquishmallow.getCategory());
+            existingSquishmallow.setSize(updatedSquishmallow.getSize());
+
+            // Mentés a frissített rekordról
+            return squishmallowRepository.save(existingSquishmallow);
+        } else {
+            // Ha nem található a Squishmallow a megadott ID-val, hibát jelez
+            throw new RuntimeException("Squishmallow with ID " + squishmallowId + " not found.");
         }
     }
 }

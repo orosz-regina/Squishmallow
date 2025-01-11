@@ -48,7 +48,7 @@
             />
           </div>
           <div class="col-md-2">
-            <button type="submit" class="btn btn-success w-100" >Add</button>
+            <button type="submit" class="btn btn-success w-100">Add</button>
           </div>
         </div>
       </form>
@@ -64,24 +64,95 @@
           <th scope="col" style="width: 15%; text-align: center;">Type</th>
           <th scope="col" style="width: 20%; text-align: center;">Category</th>
           <th scope="col" style="width: 15%; text-align: center;">Size</th>
-          <th scope="col" style="width: 25%; text-align: center;">Tools</th>
+          <th scope="col" style="width: 25%; text-align: center;">Actions</th>
         </tr>
         </thead>
         <tbody>
+        <!-- Az ngFor direktívával kiíratjuk az adatokat -->
         <tr *ngFor="let squishmallow of squishmallows; let squishmallowIndex = index">
           <th scope="row">#{{ squishmallowIndex + 1 }}</th>
-          <td><code class="badge text-bg-dark">{{ squishmallow.name }}</code></td>
+          <td><code class="badge text-bg-dark fs-5">{{ squishmallow.name }}</code></td>
           <td class="text-center">{{ squishmallow.type }}</td>
           <td class="text-center">{{ squishmallow.category }}</td>
           <td class="text-center">{{ squishmallow.size }}</td>
           <td class="text-center">
+            <button class="btn btn-outline-primary" (click)="openModal(squishmallow)" style="margin-right: 5px;">
+              Update
+            </button>
             <button class="btn btn-outline-danger" (click)="deleteSquishmallow(squishmallow.id)">
               Delete
             </button>
           </td>
+
+
         </tr>
         </tbody>
       </table>
+    </div>
+  </div>
+</div>
+
+<!-- Modal a frissítéshez -->
+<div class="modal" tabindex="-1" [ngClass]="{'d-block': isModalOpen, 'd-none': !isModalOpen}">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Update Squishmallow</h5>
+        <button type="button" class="btn-close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="updateSquishmallow()">
+          <div class="row g-2">
+            <div class="col-md-3">
+              <input
+                *ngIf="currentSquishmallow"
+                type="text"
+                class="form-control"
+                placeholder="Name"
+                [(ngModel)]="currentSquishmallow.name"
+                name="editName"
+                required
+              />
+            </div>
+            <div class="col-md-2">
+              <input
+                *ngIf="currentSquishmallow"
+                type="text"
+                class="form-control"
+                placeholder="Type"
+                [(ngModel)]="currentSquishmallow.type"
+                name="editType"
+                required
+              />
+            </div>
+            <div class="col-md-3">
+              <input
+                *ngIf="currentSquishmallow"
+                type="text"
+                class="form-control"
+                placeholder="Category"
+                [(ngModel)]="currentSquishmallow.category"
+                name="editCategory"
+                required
+              />
+            </div>
+            <div class="col-md-2">
+              <input
+                *ngIf="currentSquishmallow"
+                type="text"
+                class="form-control"
+                placeholder="Size"
+                [(ngModel)]="currentSquishmallow.size"
+                name="editSize"
+                required
+              />
+            </div>
+            <div class="col-md-2">
+              <button type="submit" class="btn btn-warning w-100">Save</button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </div>

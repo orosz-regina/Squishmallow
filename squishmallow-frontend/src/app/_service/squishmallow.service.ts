@@ -36,4 +36,9 @@ export class SquishmallowService {
   checkUserCollection(squishmallowId: number): Observable<{ exists: boolean }> {
     return this.http.get<{ exists: boolean }>(`${this.apiUrl}/check-usercollection/${squishmallowId}`);
   }
+  // A Squishmallow frissítése
+  updateSquishmallow(squishmallow: any): Observable<any> {
+    const url = `${this.apiUrl}/${squishmallow.id}`;
+    return this.http.put<any>(url, squishmallow);
+  }
 }
