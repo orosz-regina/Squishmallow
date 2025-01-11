@@ -1,20 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService, User } from '../../../_service/user.service';
-import {NgForOf} from '@angular/common';
+import {NgClass, NgForOf, NgIf} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
   imports: [
+    FormsModule,
+    NgClass,
     NgForOf,
-    FormsModule
+    NgIf
   ],
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
   users: User[] = [];
   newUser = { username: '', email: '', password: '' };
+  currentUser: any=null;
+  isModalOpen = false;
+  editingUser: any = null;
+
 
   constructor(private userService: UserService) {}
 
@@ -63,4 +69,46 @@ export class UserListComponent implements OnInit {
         }
       });
     }
+
+// Felhasználó szerkesztése
+  editUser(user: User): void {
+    this.editingUser = { ...user };  // Az aktuális felhasználó másolata, hogy szerkeszthessük
+  }
+
+  // Modal megnyitása
+  openUpdateModal(user: any) {
+    if (user) {
+      this.currentUser = { ...user }; // Az új felhasználó másolatának létrehozása
+      this.isModalOpen = true;
+    } else {
+      console.error('Invalid user data passed to modal');
+    }
+  }
+
+  // Modal bezárása
+  closeModal() {
+    this.isModalOpen = false;
+    this.currentUser = {}; // Reset the editingUser object to avoid null errors
+  }
+
+  // Felhasználó frissítése
+  updateUser(): void {
+    // Az adatokat elküldjük a backendnek, hogy frissítse őket az adatbázisban
+    this.userService.updateUser(this.currentUser).subscribe({
+      next: (updatedUser) => {
+        // Az adatbázis frissítése után frissítsük a listát
+        const index = this.users.findIndex(sm => sm.username === this.currentUser.username);
+        if (index !== -1) {
+          this.users[index] = updatedUser; // A listában is frissítjük a squishmallow adatokat
+        }
+
+        // Bezárjuk a modált
+        this.closeModal();
+      },
+      error: (err) => {
+        console.error('Failed to update squishmallow', err);
+        alert('Hiba történt a frissítés során');
+      }
+    });
+  }
 }

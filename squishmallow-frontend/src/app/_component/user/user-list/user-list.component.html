@@ -51,9 +51,59 @@
       <td>{{ user.username }}</td>
       <td>{{ user.email }}</td>
       <td>
-        <button (click)="deleteUser(user.username)" class="btn btn-danger">Delete</button> <!-- Delete gomb -->
+        <button (click)="deleteUser(user.username)" class="btn btn-outline-danger">Delete</button> <!-- Delete gomb -->
+        <button (click)="openUpdateModal(user)" class="btn btn-primary ml-2">Update</button> <!-- Update gomb -->
       </td>
     </tr>
     </tbody>
   </table>
+
+  <!-- Modal for updating user -->
+  <div class="modal" tabindex="-1" [ngClass]="{'d-block': isModalOpen, 'd-none': !isModalOpen}">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Update User</h5>
+          <button type="button" class="btn-close" (click)="closeModal()"></button>
+        </div>
+        <div class="modal-body">
+          <form *ngIf="currentUser" (ngSubmit)="updateUser()">
+            <div class="mb-3">
+              <label for="updateUsername" class="form-label">Username</label>
+              <input
+                *ngIf="currentUser"
+                type="text"
+                id="updateUsername"
+                class="form-control"
+                [(ngModel)]="currentUser.username"
+                name="username"
+                required />
+            </div>
+            <div class="mb-3">
+              <label for="updateEmail" class="form-label">Email</label>
+              <input
+                *ngIf="currentUser"
+                type="email"
+                id="updateEmail"
+                class="form-control"
+                [(ngModel)]="currentUser.email"
+                name="email"
+                required />
+            </div>
+            <div class="mb-3">
+              <label for="updatePassword" class="form-label">Password</label>
+              <input
+                *ngIf="currentUser"
+                type="password"
+                id="updatePassword"
+                class="form-control"
+                [(ngModel)]="currentUser.password"
+                name="password" />
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Update User</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

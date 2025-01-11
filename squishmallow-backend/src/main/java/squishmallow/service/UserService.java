@@ -52,4 +52,23 @@ public class UserService {
     public Iterable<User> getAllUsers() {
         return userRepository.findAll();
     }
+
+    // Felhasználó frissítése
+    public User updateUser(String username, User updatedUser) {
+        Optional<User> existingUserOptional = userRepository.findById(username); // A felhasználó keresése felhasználónév alapján
+
+        if (existingUserOptional.isPresent()) {
+            User existingUser = existingUserOptional.get();
+
+            // Frissítjük az adatokat
+            existingUser.setEmail(updatedUser.getEmail());   // Frissítjük az email címet
+            existingUser.setPassword(updatedUser.getPassword());  // Frissítjük a jelszót (ne felejtsd el titkosítani, ha szükséges)
+
+            // Mentés a frissített rekordról
+            return userRepository.save(existingUser);
+        } else {
+            // Ha nem található a felhasználó a megadott ID-val (username), hibát jelez
+            throw new RuntimeException("User with username " + username + " not found.");
+        }
+    }
 }

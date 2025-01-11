@@ -24,6 +24,7 @@ export class SquishmallowListComponent implements OnInit {
   isEditing = false;
   isModalOpen = false; // A modal állapota
 
+
   openModal(squishmallow: any): void {
     if (squishmallow) {
       this.currentSquishmallow = {...squishmallow};  // Az aktuális squishmallow adatainak másolása

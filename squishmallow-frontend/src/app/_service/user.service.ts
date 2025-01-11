@@ -27,8 +27,8 @@ export class UserService {
   }
 
   // 3. Felhasználó frissítése
-  updateUser(id: number, user: User): Observable<User> {
-    return this.http.put<User>(`${this.baseUrl}/${id}`, user);
+  updateUser(user: User): Observable<User> {
+    return this.http.put<User>(`${this.baseUrl}/${user.username}`, user);
   }
 
   // Felhasználó törlése
