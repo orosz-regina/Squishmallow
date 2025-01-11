@@ -1,9 +1,47 @@
 <div class="container mt-4">
   <h2 class="text-center mb-4">User List</h2>
+
+  <!-- Felhasználó hozzáadása -->
+  <form (ngSubmit)="addUser()" class="mb-4">
+    <div class="row g-2 align-items-center">
+      <div class="col-md-3">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Username"
+          [(ngModel)]="newUser.username"
+          name="username"
+          required />
+      </div>
+      <div class="col-md-3">
+        <input
+          type="email"
+          class="form-control"
+          placeholder="Email"
+          [(ngModel)]="newUser.email"
+          name="email"
+          required />
+      </div>
+      <div class="col-md-3">
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Password"
+          [(ngModel)]="newUser.password"
+          name="password"
+          required />
+      </div>
+      <div class="col-md-3">
+        <button type="submit" class="btn btn-success w-100">Add User</button>
+      </div>
+    </div>
+  </form>
+
+  <!-- Felhasználók listája -->
   <table class="table table-bordered table-striped">
     <thead class="table-dark">
     <tr>
-      <th>Name</th>
+      <th>Username</th>
       <th>Email</th>
     </tr>
     </thead>

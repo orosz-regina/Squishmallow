@@ -17,11 +17,6 @@ export class SquishmallowService {
     return this.http.get<any[]>(this.apiUrl);
   }
 
-  // Egy Squishmallow lekérése ID alapján
-  getSquishmallowById(id: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${id}`);
-  }
-
   // Squishmallow hozzáadása
   addSquishmallow(squishmallow: any): Observable<any> {
     return this.http.post<any>(this.apiUrl, squishmallow);

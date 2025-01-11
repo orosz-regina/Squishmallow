@@ -6,7 +6,6 @@ export interface User {
   username: string;
   email: string;
   password: string;
-  createdAt: Date;
 }
 
 @Injectable({
@@ -23,8 +22,8 @@ export class UserService {
   }
 
   // 2. Új felhasználó létrehozása
-  createUser(user: User): Observable<User> {
-    return this.http.post<User>(this.baseUrl, user);
+  addUser(user: any): Observable<any> {
+    return this.http.post<any>(this.baseUrl, user);
   }
 
   // 3. Felhasználó frissítése

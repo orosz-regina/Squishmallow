@@ -19,12 +19,12 @@ public class UserService {
 
     // Felhasználó keresése felhasználónév alapján
     public Optional<User> findByUsername(String username) {
-        return Optional.ofNullable(userRepository.findByUsername(username));
+        return userRepository.findByUsername(username);
     }
 
     // Felhasználó hozzáadása
     public User addUser(User user) {
-        return userRepository.save(user);
+        return userRepository.save(user);  // Mentjük el a felhasználót az adatbázisba
     }
 
     // Felhasználó törlése id alapján
