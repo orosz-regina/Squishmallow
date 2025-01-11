@@ -1,4 +1,13 @@
-<div class="welcome-container text-center">
-  <h1>Welcome to the Squishmallow App!</h1>
-  <p>Enjoy your collection of Squishmallows!</p>
+<div class="container text-center">
+  <h1>Welcome to Squishmallow World!</h1>
+
+  <!-- Felhasználók gomb -->
+  <button class="btn btn-primary m-2" [routerLink]="['/user-list']">
+    Go to Users
+  </button>
+
+  <!-- Squishmallow lista gomb -->
+  <button class="btn btn-success m-2" [routerLink]="['/squishmallow']">
+    Go to Squishmallow List
+  </button>
 </div>
