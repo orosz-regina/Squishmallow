@@ -31,8 +31,8 @@ export class UserService {
     return this.http.put<User>(`${this.baseUrl}/${id}`, user);
   }
 
-  // 4. Felhasználó törlése
-  deleteUser(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${id}`);
+  // Felhasználó törlése
+  deleteUser(username: string): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/${username}`);
   }
 }

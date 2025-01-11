@@ -43,12 +43,16 @@
     <tr>
       <th>Username</th>
       <th>Email</th>
+      <th>Actions</th> <!-- Hozzáadtunk egy oszlopot a gombnak -->
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let user of users">
       <td>{{ user.username }}</td>
       <td>{{ user.email }}</td>
+      <td>
+        <button (click)="deleteUser(user.username)" class="btn btn-danger">Delete</button> <!-- Delete gomb -->
+      </td>
     </tr>
     </tbody>
   </table>

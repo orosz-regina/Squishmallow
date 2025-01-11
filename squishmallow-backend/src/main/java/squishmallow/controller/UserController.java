@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 import java.util.Optional;
 
@@ -69,10 +70,14 @@ public class UserController {
         return ResponseEntity.ok(userService.getAllUsers());
     }
 
-    // Felhasználó törlése ID alapján
+    // Felhasználó törlése
     @DeleteMapping("/{username}")
-    public ResponseEntity<Void> deleteUser(@PathVariable String username) {
-        userService.deleteUser(username);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<String> deleteUser(@PathVariable String username) {
+        try {
+            userService.deleteUser(username);
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("User and associated collections deleted successfully.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occurred while deleting user: " + e.getMessage());
+        }
     }
 }

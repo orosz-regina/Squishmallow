@@ -51,8 +51,16 @@ export class UserListComponent implements OnInit {
       }
     });
   }
-
-
-
-
+// Felhasználó törlése
+  deleteUser(username: string): void {
+      this.userService.deleteUser(username).subscribe({
+        next: () => {
+          this.loadUsers();  // Frissítjük a felhasználói listát
+        },
+        error: (err) => {
+          console.error('Error deleting user', err);
+          alert('Hiba történt a felhasználó törlésekor.');
+        }
+      });
+    }
 }
