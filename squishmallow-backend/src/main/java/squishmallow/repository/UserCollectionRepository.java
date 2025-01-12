@@ -9,5 +9,6 @@ import java.util.List;
 public interface UserCollectionRepository extends JpaRepository<UserCollection, Long> {
     boolean existsBySquishmallowId(Long squishmallow_id);
     List<UserCollection> findByUserUsername(String username);
+    List<UserCollection> findByUserId(Long user_id);
 }
 

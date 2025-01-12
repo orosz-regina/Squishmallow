@@ -53,6 +53,8 @@
       <td>
         <button (click)="deleteUser(user.username)" class="btn btn-outline-danger">Delete</button> <!-- Delete gomb -->
         <button (click)="openUpdateModal(user)" class="btn btn-outline-primary ml-2">Update</button> <!-- Update gomb -->
+        <button (click)="navigateToCollection(user.id)" class="btn btn-outline-info ml-2">Collection</button>
+        <!-- Collection gomb -->
       </td>
     </tr>
     </tbody>

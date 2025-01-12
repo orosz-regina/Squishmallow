@@ -1,9 +1,11 @@
 package squishmallow.service;
 
-import squishmallow.model.UserCollection;
-import squishmallow.repository.UserCollectionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import squishmallow.model.UserCollection;
+import squishmallow.repository.UserCollectionRepository;
+
+import java.util.List;
 
 @Service
 public class UserCollectionService {
@@ -15,18 +17,22 @@ public class UserCollectionService {
         this.userCollectionRepository = userCollectionRepository;
     }
 
-    // Új UserCollection hozzáadása
+    // Korábban létező metódusok
+
     public UserCollection addUserCollection(UserCollection userCollection) {
         return userCollectionRepository.save(userCollection);
     }
 
-    // UserCollection törlése ID alapján
-    public void deleteUserCollection(Long userCollectionId) {
-        userCollectionRepository.deleteById(userCollectionId);
-    }
-
-    // Minden UserCollection lekérdezése
     public Iterable<UserCollection> getAllUserCollections() {
         return userCollectionRepository.findAll();
+    }
+
+    public void deleteUserCollection(Long id) {
+        userCollectionRepository.deleteById(id);
+    }
+
+    // Új metódus: Lekérdezi a felhasználó gyűjteményeit userId alapján
+    public List<UserCollection> getUserCollectionsByUserId(Long userId) {
+        return userCollectionRepository.findByUserId(userId);
     }
 }

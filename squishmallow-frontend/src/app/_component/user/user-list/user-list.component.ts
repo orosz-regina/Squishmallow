@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService, User } from '../../../_service/user.service';
 import {NgClass, NgForOf, NgIf} from '@angular/common';
 import {FormsModule} from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-list',
@@ -22,7 +23,7 @@ export class UserListComponent implements OnInit {
   editingUser: any = null;
 
 
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private router: Router) {}
 
   ngOnInit() {
     this.userService.getUsers().subscribe(
@@ -110,5 +111,10 @@ export class UserListComponent implements OnInit {
         alert('Hiba történt a frissítés során');
       }
     });
+  }
+
+  // A Collection gomb logikája
+  navigateToCollection(userId: number) {
+    this.router.navigate([`/collection/${userId}`]);  // Átirányítás a collection oldalra
   }
 }

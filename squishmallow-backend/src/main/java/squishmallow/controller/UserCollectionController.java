@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/usercollections")
+@RequestMapping("/collection")
 public class UserCollectionController {
 
     private final UserCollectionService userCollectionService;
@@ -37,5 +37,11 @@ public class UserCollectionController {
         userCollectionService.deleteUserCollection(id);
         return ResponseEntity.noContent().build();
     }
+    @GetMapping("/{userId}")
+    public ResponseEntity<Iterable<UserCollection>> getUserCollectionsByUserId(@PathVariable Long userId) {
+        Iterable<UserCollection> userCollections = userCollectionService.getUserCollectionsByUserId(userId);
+        return ResponseEntity.ok(userCollections);
+    }
+
 
 }

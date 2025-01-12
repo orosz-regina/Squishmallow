@@ -1,0 +1,41 @@
+<div class="container mt-4">
+  <h2 class="text-center mb-4">{{ username }}'s Squishmallow Collection</h2>
+
+  <div class="mb-4">
+    <input
+      type="number"
+      [(ngModel)]="squishmallowIdToAdd"
+      placeholder="Enter Squishmallow ID to add"
+      class="form-control w-25"
+    />
+    <button (click)="addToCollection()" class="btn btn-success mt-2">Add to Collection</button>
+  </div>
+
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+    <tr>
+      <th>Squishmallow ID</th>
+      <th>Name</th>
+      <th>Type</th>
+      <th>Size</th>
+      <th>Category</th>
+      <th>Added At</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of collection">
+      <td>{{ item.squishmallow.name }}</td>
+      <td>{{ item.squishmallow.type }}</td>
+      <td>{{ item.squishmallow.size }}</td>
+      <td>{{ item.squishmallow.category }}</td>
+      <td>{{ item.addedAt | date }}</td>
+      <td>
+        <button (click)="deleteFromCollection(item.id)" class="btn btn-outline-danger">
+          Delete
+        </button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
