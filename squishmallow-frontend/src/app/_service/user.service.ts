@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface User {
+  id: number;
   username: string;
   email: string;
   password: string;
@@ -27,8 +28,8 @@ export class UserService {
   }
 
   // 3. Felhasználó frissítése
-  updateUser(user: User): Observable<User> {
-    return this.http.put<User>(`${this.baseUrl}/${user.username}`, user);
+  updateUser(user: any): Observable<User> {
+    return this.http.put<User>(`${this.baseUrl}/${user.id}`, user);
   }
 
   // Felhasználó törlése

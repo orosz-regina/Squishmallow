@@ -8,11 +8,13 @@ import java.time.LocalDateTime;
 @Data
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Automatikusan generált azonosító
+    private Long id;
 
     @Column(unique = true)  // biztosítja, hogy az email csak egyszer szerepelhet
     private String email;
 
-    @Id
     @Column(unique = true)  // biztosítja, hogy a username csak egyszer szerepelhet
     private String username;
 

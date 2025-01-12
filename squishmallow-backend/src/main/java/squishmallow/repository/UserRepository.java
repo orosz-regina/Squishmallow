@@ -9,6 +9,7 @@ import java.util.Optional;
 @Repository
 public interface UserRepository extends JpaRepository<User, String> {  // Itt String típusú az ID, amit te használsz
     Optional<User> findByEmail(String email);  // Email alapján keresés
-    Optional<User> findByUsername(String username);  // Username alapján keresés
+    Optional<User> findByUsername(String username);
+    Optional<User> findById(Long Id);// Username alapján keresés
     void deleteByUsername(String username);  // Username alapján törlés
 }

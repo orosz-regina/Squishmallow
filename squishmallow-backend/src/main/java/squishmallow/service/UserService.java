@@ -40,7 +40,7 @@ public class UserService {
         }
 
         // Töröljük a felhasználót
-        Optional<User> userOptional = userRepository.findByUsername(username);
+        Optional<User> userOptional = userRepository.findById(username);
         if (userOptional.isPresent()) {
             userRepository.delete(userOptional.get());
         } else {
@@ -53,22 +53,28 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    // Felhasználó frissítése
-    public User updateUser(String username, User updatedUser) {
-        Optional<User> existingUserOptional = userRepository.findById(username); // A felhasználó keresése felhasználónév alapján
+    /**
+     * Felhasználó frissítése.
+     *
+     * @param currentUsername A frissítendő felhasználó aktuális username-je.
+     * @param updatedUser Az új adatokkal rendelkező felhasználói objektum.
+     * @return A frissített felhasználó objektum.
+     */
+    public User updateUser(Long currentUserId, User updatedUser) {
+        Optional<User> existingUserOptional = userRepository.findById(currentUserId);
 
         if (existingUserOptional.isPresent()) {
             User existingUser = existingUserOptional.get();
 
             // Frissítjük az adatokat
-            existingUser.setEmail(updatedUser.getEmail());   // Frissítjük az email címet
-            existingUser.setPassword(updatedUser.getPassword());  // Frissítjük a jelszót (ne felejtsd el titkosítani, ha szükséges)
+            existingUser.setUsername(updatedUser.getUsername());
+            existingUser.setEmail(updatedUser.getEmail());
+            existingUser.setPassword(updatedUser.getPassword());
 
-            // Mentés a frissített rekordról
+            // Mentés az adatbázisba
             return userRepository.save(existingUser);
         } else {
-            // Ha nem található a felhasználó a megadott ID-val (username), hibát jelez
-            throw new RuntimeException("User with username " + username + " not found.");
+            throw new RuntimeException("User with username " + currentUserId + " not found.");
         }
     }
 }

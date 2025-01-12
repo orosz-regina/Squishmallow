@@ -59,16 +59,16 @@ export class UserListComponent implements OnInit {
   }
 // Felhasználó törlése
   deleteUser(username: string): void {
-      this.userService.deleteUser(username).subscribe({
-        next: () => {
-          this.loadUsers();  // Frissítjük a felhasználói listát
-        },
-        error: (err) => {
-          console.error('Error deleting user', err);
-          alert('Hiba történt a felhasználó törlésekor.');
-        }
-      });
-    }
+    this.userService.deleteUser(username).subscribe({
+      next: () => {
+        this.loadUsers();  // Frissítjük a felhasználói listát
+      },
+      error: (err) => {
+        console.error('Error deleting user', err);
+        alert('Hiba történt a felhasználó törlésekor.');
+      }
+    });
+  }
 
 // Felhasználó szerkesztése
   editUser(user: User): void {
@@ -97,7 +97,7 @@ export class UserListComponent implements OnInit {
     this.userService.updateUser(this.currentUser).subscribe({
       next: (updatedUser) => {
         // Az adatbázis frissítése után frissítsük a listát
-        const index = this.users.findIndex(sm => sm.username === this.currentUser.username);
+        const index = this.users.findIndex(sm => sm.id === this.currentUser.id);
         if (index !== -1) {
           this.users[index] = updatedUser; // A listában is frissítjük a squishmallow adatokat
         }
