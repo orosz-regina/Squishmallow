@@ -7,9 +7,9 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, String> {  // Itt String típusú az ID, amit te használsz
-    Optional<User> findByEmail(String email);  // Email alapján keresés
+public interface UserRepository extends JpaRepository<User, String> {
+    Optional<User> findByEmail(String email);
     Optional<User> findByUsername(String username);
-    Optional<User> findById(Long Id);// Username alapján keresés
-    void deleteByUsername(String username);  // Username alapján törlés
+    Optional<User> findById(Long Id);
+    void deleteByUsername(String username);
 }

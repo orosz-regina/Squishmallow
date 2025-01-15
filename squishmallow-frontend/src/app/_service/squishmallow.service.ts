@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class SquishmallowService {
 
-  private apiUrl = 'http://localhost:8080/squishmallows'; // Az API URL
+  private apiUrl = 'http://localhost:8080/squishmallows';
 
   constructor(private http: HttpClient) { }
 

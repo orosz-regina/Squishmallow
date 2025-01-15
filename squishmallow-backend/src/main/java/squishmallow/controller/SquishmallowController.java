@@ -76,7 +76,7 @@ public class SquishmallowController {
             Squishmallow updatedSquishmallow = squishmallowService.updateSquishmallow(id, squishmallow);
             return ResponseEntity.ok(updatedSquishmallow);
         } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null); // Ha nem találjuk a frissítendő Squishmallow-t
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
 

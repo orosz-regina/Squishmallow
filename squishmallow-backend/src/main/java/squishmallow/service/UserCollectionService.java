@@ -26,12 +26,12 @@ public class UserCollectionService {
 
     // UserCollection hozzáadása
     public UserCollection addUserCollection(UserCollection userCollection) {
-        return userCollectionRepository.save(userCollection); // Mentés az adatbázisba
+        return userCollectionRepository.save(userCollection);
     }
 
     // A UserCollection listája egy adott UserID alapján
     public Iterable<UserCollection> getUserCollectionsByUserId(Long userId) {
-        return userCollectionRepository.findByUserId(userId);  // A UserCollection-okat az User ID alapján keresve
+        return userCollectionRepository.findByUserId(userId);
     }
 
     // Minden UserCollection lekérdezése
@@ -41,7 +41,6 @@ public class UserCollectionService {
 
     // UserCollection törlése ID alapján
     public boolean deleteSquishmallowFromCollection(Long userId, Long collectionId) {
-        // Ellenőrizzük, hogy létezik-e ilyen gyűjtemény az adott felhasználóhoz
         Optional<UserCollection> userCollection = userCollectionRepository.findByUserIdAndId(userId, collectionId);
         if (userCollection.isPresent()) {
             userCollectionRepository.delete(userCollection.get());
@@ -49,9 +48,4 @@ public class UserCollectionService {
         }
         return false;
     }
-
-    /*// Az UserCollection-okat a Squishmallow ID és User ID alapján kereshetjük, ha szükséges
-    public Optional<UserCollection> findByUserAndSquishmallow(User user, Squishmallow squishmallow) {
-        return userCollectionRepository.findByUserAndSquishmallow(user, squishmallow);
-    }*/
 }

@@ -39,27 +39,20 @@ public class UserCollectionController {
         if (userId == null || squishmallowId == null) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("User ID or Squishmallow ID is missing.");
         }
-
-        // User betöltése
         User user = userService.findById(userId);
         if (user == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found.");
         }
-
-        // Squishmallow betöltése
         Optional<Squishmallow> optionalSquishmallow = squishmallowService.findById(squishmallowId);
         if (optionalSquishmallow.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Squishmallow not found.");
         }
 
         Squishmallow squishmallow = optionalSquishmallow.get();
-
-        // UserCollection létrehozása
         UserCollection userCollection = new UserCollection();
         userCollection.setUser(user);
         userCollection.setSquishmallow(squishmallow);
 
-        // Mentés
         UserCollection savedUserCollection = userCollectionService.addUserCollection(userCollection);
         return new ResponseEntity<>(savedUserCollection, HttpStatus.CREATED);
     }
@@ -87,6 +80,6 @@ public class UserCollectionController {
     @GetMapping("/{userId}")
     public ResponseEntity<Iterable<UserCollection>> getUserCollectionsByUserId(@PathVariable Long userId) {
         Iterable<UserCollection> userCollections = userCollectionService.getUserCollectionsByUserId(userId);
-        return ResponseEntity.ok(userCollections); // A felhasználó összes gyűjteménye
+        return ResponseEntity.ok(userCollections);
     }
 }

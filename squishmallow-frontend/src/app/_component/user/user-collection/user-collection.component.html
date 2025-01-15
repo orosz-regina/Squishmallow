@@ -1,44 +1,49 @@
 <div class="container mt-4">
-  <div *ngIf="username">
-    <h2>Welcome, {{ username }}!</h2> <!-- Felhasználó neve megjelenítése -->
+  <div *ngIf="username" class="card-header bg-primary text-white text-center" style="padding: 1px 0;">
+    <h2>Welcome, {{ username }}!</h2>
   </div>
 
-  <div class="mb-4">
-    <label for="squishmallowSelect">Select Squishmallow to Add:</label>
-    <select
-      id="squishmallowSelect"
-      [(ngModel)]="newSquishmallowToAdd.squishmallowId"
-      class="form-control w-25"
-      (change)="updateSquishmallowId(newSquishmallowToAdd.squishmallowId)"
-    >
-      <option *ngFor="let squishmallow of squishmallows" [value]="squishmallow.id">
-        {{ squishmallow.name }} - {{ squishmallow.type }} - {{ squishmallow.size }} - {{ squishmallow.category }}
-      </option>
-    </select>
-
-    <button (click)="addToCollection()" class="btn btn-success mt-2">Add to Collection</button>
+  <div class="mb-4" style="margin-top: 20px;">
+    <div class="d-flex">
+      <!-- Select Squishmallow -->
+      <select
+        id="squishmallowSelect"
+        [(ngModel)]="newSquishmallowToAdd.squishmallowId"
+        class="form-control w-25"
+        (change)="updateSquishmallowId(newSquishmallowToAdd.squishmallowId)"
+      >
+        <option value="" disabled selected style="color: #b3b3b3;">Select Squishmallow to Add</option>
+        <option *ngFor="let squishmallow of squishmallows" [value]="squishmallow.id">
+          {{ squishmallow.name }} - {{ squishmallow.type }} - {{ squishmallow.size }} - {{ squishmallow.category }}
+        </option>
+      </select>
+      <button (click)="addToCollection()" class="btn btn-success" [disabled]="!newSquishmallowToAdd.squishmallowId" style="margin-left: 10px;">Add to Collection</button>
+    </div>
   </div>
 
-  <table class="table table-bordered table-striped">
+
+
+
+  <table class="table table-hover table-striped">
     <thead class="table-dark">
     <tr>
-      <th>Squishmallow ID</th>
-      <th>Name</th>
-      <th>Type</th>
-      <th>Size</th>
-      <th>Category</th>
-      <th>Added At</th>
-      <th>Actions</th>
+      <th scope="col" style="width: 5%;">#</th>
+      <th scope="col" style="width: 20%;">Name</th>
+      <th scope="col" style="width: 15%; text-align: center;">Type</th>
+      <th scope="col" style="width: 20%; text-align: center;">Category</th>
+      <th scope="col" style="width: 15%; text-align: center;">Size</th>
+      <th scope="col" style="width: 15%; text-align: center;">Added at</th>
+      <th scope="col" style="width: 5%; text-align: center;">Actions</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let item of collection">
-      <td>{{ item.squishmallow.id }}</td>
-      <td>{{ item.squishmallow.name }}</td>
-      <td>{{ item.squishmallow.type }}</td>
-      <td>{{ item.squishmallow.size }}</td>
-      <td>{{ item.squishmallow.category }}</td>
-      <td>{{ item.addedAt | date }}</td>
+    <tr *ngFor="let item of collection; let i = index">
+      <td>#{{ i + 1 }}</td>
+      <td><code class="badge text-bg-dark fs-5">{{ item.squishmallow.name }}</code></td>
+      <td class="text-center">{{ item.squishmallow.type }}</td>
+      <td class="text-center">{{item.squishmallow.category }}</td>
+      <td class="text-center">{{ item.squishmallow.size }}</td>
+      <td class="text-center">{{ item.addedAt | date }}</td>
       <td>
         <button (click)="deleteFromCollection(item.id)" class="btn btn-outline-danger">
           Delete

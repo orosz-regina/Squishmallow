@@ -9,13 +9,13 @@ import java.time.LocalDateTime;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)  // Automatikusan generált azonosító
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)  // biztosítja, hogy az email csak egyszer szerepelhet
+    @Column(unique = true)
     private String email;
 
-    @Column(unique = true)  // biztosítja, hogy a username csak egyszer szerepelhet
+    @Column(unique = true)
     private String username;
 
     private String password;

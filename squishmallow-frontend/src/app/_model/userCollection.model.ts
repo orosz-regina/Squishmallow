@@ -10,5 +10,5 @@ export class Collection {
   id!: number;
   squishmallowId!: number;
   addedAt!: Date;
-  squishmallow!: Squishmallow; // Ez a kapcsolat a Squishmallow adatokhoz
+  squishmallow!: Squishmallow;
 }

@@ -3,15 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Collection } from '../_model/userCollection.model';
-import { Squishmallow } from '../_model/squishmallow.model'; // Importáld a Squishmallow típust
+import { Squishmallow } from '../_model/squishmallow.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CollectionService {
 
-  private apiUrl = 'http://localhost:8080/collection'; // Az API végpontja
-  private squishmallowApiUrl = 'http://localhost:8080/squishmallows'; // A Squishmallowk API-ja
+  private apiUrl = 'http://localhost:8080/collection';
+  private squishmallowApiUrl = 'http://localhost:8080/squishmallows';
 
   constructor(private http: HttpClient) {}
 
@@ -20,13 +20,10 @@ export class CollectionService {
   }
 
   getAllSquishmallows(): Observable<Squishmallow[]> {
-    return this.http.get<Squishmallow[]>(this.squishmallowApiUrl); // Lekérjük az összes squishmallowt
+    return this.http.get<Squishmallow[]>(this.squishmallowApiUrl);
   }
 
   addToCollection(SquishmallowToAdd: any): Observable<any> {
-    console.log('New Squishmallow to add:', SquishmallowToAdd);
-    console.log('Sending JSON:', JSON.stringify(SquishmallowToAdd)); // Ellenőrizd, hogy mi kerül elküldésre
-
     return this.http.post<any>(`${this.apiUrl}/add`, SquishmallowToAdd, {
       headers: {'Content-Type': 'application/json'}
     });

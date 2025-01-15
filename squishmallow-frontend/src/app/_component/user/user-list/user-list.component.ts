@@ -42,27 +42,24 @@ export class UserListComponent implements OnInit {
       this.users = data;
     });
   }
-
+//user hozzáadása
   addUser() {
     this.userService.addUser(this.newUser).subscribe({
       next: (newUser) => {
-        // Hozzáadjuk az új felhasználót a listához, ha sikeresen mentve lett
         this.users.push(newUser);
-
-        // Az űrlapot visszaállítjuk alapértelmezettre
         this.newUser = { username: '', email: '', password: ''};
       },
       error: (err) => {
         console.error('Failed to add user', err);
-        alert(err.error); // A backend által küldött hibaüzenet megjelenítése
+        alert(err.error);
       }
     });
   }
-// Felhasználó törlése
+// user törlése
   deleteUser(username: string): void {
     this.userService.deleteUser(username).subscribe({
       next: () => {
-        this.loadUsers();  // Frissítjük a felhasználói listát
+        this.loadUsers();
       },
       error: (err) => {
         console.error('Error deleting user', err);
@@ -71,15 +68,15 @@ export class UserListComponent implements OnInit {
     });
   }
 
-// Felhasználó szerkesztése
+// user szerkesztése
   editUser(user: User): void {
-    this.editingUser = { ...user };  // Az aktuális felhasználó másolata, hogy szerkeszthessük
+    this.editingUser = { ...user };
   }
 
   // Modal megnyitása
   openUpdateModal(user: any) {
     if (user) {
-      this.currentUser = { ...user }; // Az új felhasználó másolatának létrehozása
+      this.currentUser = { ...user };
       this.isModalOpen = true;
     } else {
       console.error('Invalid user data passed to modal');
@@ -89,21 +86,17 @@ export class UserListComponent implements OnInit {
   // Modal bezárása
   closeModal() {
     this.isModalOpen = false;
-    this.currentUser = {}; // Reset the editingUser object to avoid null errors
+    this.currentUser = {};
   }
 
-  // Felhasználó frissítése
+  // user frissítése
   updateUser(): void {
-    // Az adatokat elküldjük a backendnek, hogy frissítse őket az adatbázisban
     this.userService.updateUser(this.currentUser).subscribe({
       next: (updatedUser) => {
-        // Az adatbázis frissítése után frissítsük a listát
         const index = this.users.findIndex(sm => sm.id === this.currentUser.id);
         if (index !== -1) {
-          this.users[index] = updatedUser; // A listában is frissítjük a squishmallow adatokat
+          this.users[index] = updatedUser;
         }
-
-        // Bezárjuk a modált
         this.closeModal();
       },
       error: (err) => {
@@ -113,8 +106,8 @@ export class UserListComponent implements OnInit {
     });
   }
 
-  // A Collection gomb logikája
+  // A Collection gomb
   navigateToCollection(userId: number) {
-    this.router.navigate([`/collection/${userId}`]);  // Átirányítás a collection oldalra
+    this.router.navigate([`/collection/${userId}`]);
   }
 }

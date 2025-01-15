@@ -10,24 +10,24 @@ export interface User {
 }
 
 @Injectable({
-  providedIn: 'root' // Globális szintű szolgáltatás
+  providedIn: 'root'
 })
 export class UserService {
-  private baseUrl = 'http://localhost:8080/users'; // Backend API URL
+  private baseUrl = 'http://localhost:8080/users';
 
   constructor(private http: HttpClient) {}
 
-  // 1. Összes felhasználó lekérése
+  // Összes felhasználó lekérése
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.baseUrl);
   }
 
-  // 2. Új felhasználó létrehozása
+  // Új felhasználó létrehozása
   addUser(user: any): Observable<any> {
     return this.http.post<any>(this.baseUrl, user);
   }
 
-  // 3. Felhasználó frissítése
+  // Felhasználó frissítése
   updateUser(user: any): Observable<User> {
     return this.http.put<User>(`${this.baseUrl}/${user.id}`, user);
   }

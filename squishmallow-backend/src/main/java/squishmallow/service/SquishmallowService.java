@@ -51,7 +51,6 @@ public class SquishmallowService {
         try {
             return userCollectionRepository.existsBySquishmallowId(squishmallowId);
         } catch (Exception e) {
-            // Hibakezelés javítva, most logolunk
             System.err.println("Error while checking if Squishmallow is in user collection: " + e.getMessage());
             return false;
         }

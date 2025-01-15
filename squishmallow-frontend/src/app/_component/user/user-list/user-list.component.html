@@ -38,29 +38,28 @@
   </form>
 
   <!-- Felhasználók listája -->
-  <table class="table table-bordered table-striped">
+  <table class="table table-bordered table-hover table-striped">
     <thead class="table-dark">
     <tr>
-      <th>Username</th>
-      <th>Email</th>
-      <th>Actions</th> <!-- Hozzáadtunk egy oszlopot a gombnak -->
+      <th scope="col" style="width: 30%; text-align: center;">Username</th>
+      <th scope="col" style="width: 40%; text-align: center;">Email</th>
+      <th scope="col" style="width: 30%; text-align: center;">Actions</th>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let user of users">
       <td>{{ user.username }}</td>
       <td>{{ user.email }}</td>
-      <td>
-        <button (click)="deleteUser(user.username)" class="btn btn-outline-danger">Delete</button> <!-- Delete gomb -->
-        <button (click)="openUpdateModal(user)" class="btn btn-outline-primary ml-2">Update</button> <!-- Update gomb -->
-        <button (click)="navigateToCollection(user.id)" class="btn btn-outline-info ml-2">Collection</button>
-        <!-- Collection gomb -->
+      <td class="text-center">
+        <button (click)="deleteUser(user.username)" class="btn btn-outline-danger" style="margin-right: 10px;">Delete</button> <!-- Delete gomb -->
+        <button (click)="openUpdateModal(user)" class="btn btn-outline-primary ml-2" style="margin-right: 10px;">Update</button> <!-- Update gomb -->
+        <button (click)="navigateToCollection(user.id)" class="btn btn-outline-info ml-2" style="margin-right: 10px;">Collection</button>
       </td>
     </tr>
     </tbody>
   </table>
 
-  <!-- Modal for updating user -->
+  <!-- Modal user frissítéshez-->
   <div class="modal" tabindex="-1" [ngClass]="{'d-block': isModalOpen, 'd-none': !isModalOpen}">
     <div class="modal-dialog">
       <div class="modal-content">

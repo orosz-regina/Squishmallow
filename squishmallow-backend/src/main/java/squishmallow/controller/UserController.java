@@ -33,24 +33,19 @@ public class UserController {
     @PostMapping
     public ResponseEntity<?> createUser(@RequestBody User user) {
         try {
-            // Ellenőrizzük, hogy létezik-e már a felhasználó email címe
             Optional<User> existingUserByEmail = userRepository.findByEmail(user.getEmail());
             if (existingUserByEmail.isPresent()) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                         .body("A felhasználó már létezik ezzel az email címmel: " + user.getEmail());
             }
 
-            // Ellenőrizzük, hogy létezik-e már a felhasználó felhasználóneve
             Optional<User> existingUserByUsername = userRepository.findByUsername(user.getUsername());
             if (existingUserByUsername.isPresent()) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                         .body("A felhasználónév már létezik: " + user.getUsername());
             }
 
-            // Mentjük el a felhasználót az adatbázisba
             User savedUser = userService.addUser(user);
-
-            // Visszaadjuk a mentett felhasználót
             return new ResponseEntity<>(savedUser, HttpStatus.CREATED);
         } catch (Exception e) {
             e.printStackTrace();
@@ -66,44 +61,22 @@ public class UserController {
             User user = userService.findById(userId);
             if (user == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                        .body("User not found with ID: " + userId);  // Egyszerű szöveges hibaüzenet
+                        .body("User not found with ID: " + userId);
             }
 
             return ResponseEntity.ok(user);
         } catch (Exception e) {
-            // Egyszerű hibaüzenet visszaadása
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Internal Server Error: " + e.getMessage());
         }
     }
-
-
-
-
-
-    // Felhasználó keresése username alapján
-    /*@GetMapping("/username/{username}")
-    public ResponseEntity<?> getUserByUsername(@PathVariable String username) {
-        // Kód a felhasználó név alapú kereséséhez
-    }*/
 
     // Minden felhasználó lekérdezése
     @GetMapping
     public ResponseEntity<Iterable<User>> getAllUsers() {
         return ResponseEntity.ok(userService.getAllUsers());
     }
-/*
-    // Felhasználó törlése
-    @DeleteMapping("/{username}")
-    public ResponseEntity<String> deleteUser(@PathVariable String username) {
-        try {
-            userService.deleteUser(username);
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).body("User and associated collections deleted successfully.");
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occurred while deleting user: " + e.getMessage());
-        }
-    }
-*/
+
     //Felhasználó update
     @PutMapping("/{currentUserId}")
     public ResponseEntity<?> updateUser(
