@@ -60,8 +60,6 @@ export class CollectionComponent implements OnInit {
 
 
   addToCollection(): void {
-    console.log('New Squishmallow to add:', this.newSquishmallowToAdd);  // Ellenőrizd az objektumot
-
     if (this.newSquishmallowToAdd.userId && this.newSquishmallowToAdd.squishmallowId) {
       // Ha a userId és a squishmallowId meg van adva, küldhetjük el a kérést
       this.collectionService.addToCollection(this.newSquishmallowToAdd).subscribe(
@@ -139,13 +137,15 @@ export class CollectionComponent implements OnInit {
 
 
   deleteFromCollection(collectionId: number): void {
-    const userId = 1;
-    this.collectionService.deleteFromCollection(userId, collectionId).subscribe(
+    this.collectionService.deleteFromCollection(this.userId, collectionId).subscribe(
       () => {
+        // A törlés után frissítjük a gyűjteményt úgy, hogy eltávolítjuk a törölt Squishmallow-t
         this.collection = this.collection.filter(item => item.id !== collectionId);
+        console.log('Squishmallow deleted successfully.');
       },
       (error) => {
         console.error('Error deleting from collection:', error);
+        alert('Failed to delete Squishmallow from collection. Please try again.');
       }
     );
   }

@@ -40,8 +40,14 @@ public class UserCollectionService {
     }
 
     // UserCollection törlése ID alapján
-    public void deleteUserCollection(Long id) {
-        userCollectionRepository.deleteById(id);
+    public boolean deleteSquishmallowFromCollection(Long userId, Long collectionId) {
+        // Ellenőrizzük, hogy létezik-e ilyen gyűjtemény az adott felhasználóhoz
+        Optional<UserCollection> userCollection = userCollectionRepository.findByUserIdAndId(userId, collectionId);
+        if (userCollection.isPresent()) {
+            userCollectionRepository.delete(userCollection.get());
+            return true;
+        }
+        return false;
     }
 
     /*// Az UserCollection-okat a Squishmallow ID és User ID alapján kereshetjük, ha szükséges

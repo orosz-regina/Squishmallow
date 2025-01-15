@@ -73,10 +73,14 @@ public class UserCollectionController {
     }
 
     // UserCollection törlése ID alapján
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUserCollection(@PathVariable Long id) {
-        userCollectionService.deleteUserCollection(id);
-        return ResponseEntity.noContent().build(); // Törlés sikeresen
+    @DeleteMapping("/delete/{userId}/{collectionId}")
+    public ResponseEntity<Void> deleteFromCollection(@PathVariable Long userId, @PathVariable Long collectionId) {
+        boolean isDeleted = userCollectionService.deleteSquishmallowFromCollection(userId, collectionId);
+        if (isDeleted) {
+            return ResponseEntity.noContent().build();
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 
     // User ID alapján a UserCollection lekérdezése

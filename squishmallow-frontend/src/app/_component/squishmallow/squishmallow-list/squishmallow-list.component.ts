@@ -97,12 +97,6 @@ export class SquishmallowListComponent implements OnInit {
     });
   }
 
-  editSquishmallow(squishmallow: any) {
-    console.log('Editing Squishmallow:', squishmallow); // Ellenőrző log
-    this.currentSquishmallow = {...squishmallow}; // Másolat készítése az aktuális elemről
-    this.isEditing = true; // Szerkesztési mód aktiválása
-  }
-
   updateSquishmallow(): void {
     // Az adatokat elküldjük a backendnek, hogy frissítse őket az adatbázisban
     this.squishmallowService.updateSquishmallow(this.currentSquishmallow).subscribe({
