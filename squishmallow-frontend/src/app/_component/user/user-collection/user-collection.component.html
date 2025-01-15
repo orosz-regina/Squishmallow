@@ -1,13 +1,21 @@
 <div class="container mt-4">
-  <h2 class="text-center mb-4">{{ username }}'s Squishmallow Collection</h2>
+  <div *ngIf="username">
+    <h2>Welcome, {{ username }}!</h2> <!-- Felhasználó neve megjelenítése -->
+  </div>
 
   <div class="mb-4">
-    <input
-      type="number"
-      [(ngModel)]="squishmallowIdToAdd"
-      placeholder="Enter Squishmallow ID to add"
+    <label for="squishmallowSelect">Select Squishmallow to Add:</label>
+    <select
+      id="squishmallowSelect"
+      [(ngModel)]="newSquishmallowToAdd.squishmallowId"
       class="form-control w-25"
-    />
+      (change)="updateSquishmallowId(newSquishmallowToAdd.squishmallowId)"
+    >
+      <option *ngFor="let squishmallow of squishmallows" [value]="squishmallow.id">
+        {{ squishmallow.name }} - {{ squishmallow.type }} - {{ squishmallow.size }} - {{ squishmallow.category }}
+      </option>
+    </select>
+
     <button (click)="addToCollection()" class="btn btn-success mt-2">Add to Collection</button>
   </div>
 
@@ -25,6 +33,7 @@
     </thead>
     <tbody>
     <tr *ngFor="let item of collection">
+      <td>{{ item.squishmallow.id }}</td>
       <td>{{ item.squishmallow.name }}</td>
       <td>{{ item.squishmallow.type }}</td>
       <td>{{ item.squishmallow.size }}</td>

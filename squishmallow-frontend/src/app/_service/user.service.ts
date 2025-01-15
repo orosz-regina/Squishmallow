@@ -36,4 +36,8 @@ export class UserService {
   deleteUser(username: string): Observable<void> {
     return this.http.delete<void>(`${this.baseUrl}/${username}`);
   }
+
+  getUsername(userId: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${userId}`);
+  }
 }

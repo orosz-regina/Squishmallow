@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.NoSuchElementException;
 
 
+
 import java.util.Optional;
 
 @RestController
@@ -26,6 +27,7 @@ public class UserController {
         this.userService = userService;
         this.userRepository = userRepository;
     }
+
 
     //felhasználó hozzáadása
     @PostMapping
@@ -56,22 +58,41 @@ public class UserController {
                     .body("Hiba történt a felhasználó hozzáadása közben: " + e.getMessage());
         }
     }
+    // GET végpont a felhasználó adatainak lekérésére
+    @GetMapping("/{userId}")
+    public ResponseEntity<?> getUserById(@PathVariable Long userId) {
+
+        try {
+            User user = userService.findById(userId);
+            if (user == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                        .body("User not found with ID: " + userId);  // Egyszerű szöveges hibaüzenet
+            }
+
+            return ResponseEntity.ok(user);
+        } catch (Exception e) {
+            // Egyszerű hibaüzenet visszaadása
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Internal Server Error: " + e.getMessage());
+        }
+    }
+
+
 
 
 
     // Felhasználó keresése username alapján
-    @GetMapping("/{username}")
-    public ResponseEntity<User> getUserByUsername(@PathVariable String username) {
-        Optional<User> user = userService.findByUsername(username);
-        return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-    }
+    /*@GetMapping("/username/{username}")
+    public ResponseEntity<?> getUserByUsername(@PathVariable String username) {
+        // Kód a felhasználó név alapú kereséséhez
+    }*/
 
     // Minden felhasználó lekérdezése
     @GetMapping
     public ResponseEntity<Iterable<User>> getAllUsers() {
         return ResponseEntity.ok(userService.getAllUsers());
     }
-
+/*
     // Felhasználó törlése
     @DeleteMapping("/{username}")
     public ResponseEntity<String> deleteUser(@PathVariable String username) {
@@ -82,7 +103,7 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occurred while deleting user: " + e.getMessage());
         }
     }
-
+*/
     //Felhasználó update
     @PutMapping("/{currentUserId}")
     public ResponseEntity<?> updateUser(

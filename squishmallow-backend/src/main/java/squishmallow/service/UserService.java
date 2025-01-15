@@ -1,11 +1,12 @@
 package squishmallow.service;
 
 import squishmallow.model.User;
-import squishmallow.model.UserCollection; // Importáljuk a UserCollection osztályt
+import squishmallow.model.UserCollection;
 import squishmallow.repository.UserRepository;
 import squishmallow.repository.UserCollectionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -32,15 +33,15 @@ public class UserService {
     }
 
     // Felhasználó törlése és a hozzá kapcsolódó userCollection törlése
-    public void deleteUser(String username) {
-        // A kapcsolódó user_collection sorok törlése
-        List<UserCollection> userCollections = userCollectionRepository.findByUserUsername(username);
+    public void deleteUser(Long userId) {
+        // A kapcsolódó user_collection sorok törlése a felhasználó ID-ja alapján
+        List<UserCollection> userCollections = userCollectionRepository.findByUserId(userId);
         if (!userCollections.isEmpty()) {
             userCollectionRepository.deleteAll(userCollections);  // Töröljük a kapcsolódó user_collection rekordokat
         }
 
         // Töröljük a felhasználót
-        Optional<User> userOptional = userRepository.findById(username);
+        Optional<User> userOptional = userRepository.findById(userId);
         if (userOptional.isPresent()) {
             userRepository.delete(userOptional.get());
         } else {
@@ -53,10 +54,14 @@ public class UserService {
         return userRepository.findAll();
     }
 
+    // Felhasználó keresése ID alapján
+    public User findById(Long userId) {
+        return userRepository.findById(userId).orElse(null);
+    }
     /**
      * Felhasználó frissítése.
      *
-     * @param currentUsername A frissítendő felhasználó aktuális username-je.
+     * @param currentUserId A frissítendő felhasználó aktuális ID-ja.
      * @param updatedUser Az új adatokkal rendelkező felhasználói objektum.
      * @return A frissített felhasználó objektum.
      */
@@ -74,7 +79,7 @@ public class UserService {
             // Mentés az adatbázisba
             return userRepository.save(existingUser);
         } else {
-            throw new RuntimeException("User with username " + currentUserId + " not found.");
+            throw new RuntimeException("User with ID " + currentUserId + " not found.");
         }
     }
 }

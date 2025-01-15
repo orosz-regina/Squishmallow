@@ -31,9 +31,14 @@ public class SquishmallowService {
         return squishmallowRepository.save(squishmallow);
     }
 
-    // Squishmallow törlése ID alapján
+    // Squishmallow törlése ID alapján, előbb ellenőrizzük, hogy létezik-e
     public void deleteSquishmallow(Long squishmallowId) {
-        squishmallowRepository.deleteById(squishmallowId);
+        Optional<Squishmallow> squishmallow = squishmallowRepository.findById(squishmallowId);
+        if (squishmallow.isPresent()) {
+            squishmallowRepository.deleteById(squishmallowId);
+        } else {
+            throw new RuntimeException("Squishmallow with ID " + squishmallowId + " not found.");
+        }
     }
 
     // Minden Squishmallow lekérdezése
@@ -46,12 +51,13 @@ public class SquishmallowService {
         try {
             return userCollectionRepository.existsBySquishmallowId(squishmallowId);
         } catch (Exception e) {
-            System.out.println("Hiba történt a felhasználói gyűjtemény ellenőrzésekor: " + e.getMessage());
+            // Hibakezelés javítva, most logolunk
+            System.err.println("Error while checking if Squishmallow is in user collection: " + e.getMessage());
             return false;
         }
     }
 
-    // Squishmallow frissítése
+    // Squishmallow frissítése ID alapján
     public Squishmallow updateSquishmallow(Long squishmallowId, Squishmallow updatedSquishmallow) {
         Optional<Squishmallow> existingSquishmallowOptional = squishmallowRepository.findById(squishmallowId);
 

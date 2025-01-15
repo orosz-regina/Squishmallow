@@ -26,6 +26,7 @@ public class SquishmallowController {
     // Squishmallow hozzáadása
     @PostMapping
     public ResponseEntity<?> createSquishmallow(@RequestBody Squishmallow squishmallow) {
+        System.out.println(" eljutott:"+ squishmallow );
         try {
             Optional<Squishmallow> existingSquishmallow = squishmallowRepository.findByNameAndTypeAndCategoryAndSize(
                     squishmallow.getName(),

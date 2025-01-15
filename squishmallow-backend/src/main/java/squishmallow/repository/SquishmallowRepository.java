@@ -9,4 +9,5 @@ import java.util.Optional;
 @Repository
 public interface SquishmallowRepository extends JpaRepository<Squishmallow, Long> {
     Optional<Squishmallow> findByNameAndTypeAndCategoryAndSize(String name, String type, String category, String size);
+    Optional<Squishmallow> findById(Long Id);
 }

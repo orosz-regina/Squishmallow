@@ -20,8 +20,7 @@ public class UserCollection {
     @ManyToOne
     @JoinColumn(name = "squishmallow_id", nullable = false)
     private Squishmallow squishmallow;
-
     @Column(name = "added_at", nullable = false)
-    private OffsetDateTime addedAt;
+    private OffsetDateTime addedAt = OffsetDateTime.now();
 }
 

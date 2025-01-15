@@ -8,7 +8,10 @@ import java.util.List;
 @Repository
 public interface UserCollectionRepository extends JpaRepository<UserCollection, Long> {
     boolean existsBySquishmallowId(Long squishmallow_id);
+    boolean existsByUserId(Long squishmallow_id);
     List<UserCollection> findByUserUsername(String username);
     List<UserCollection> findByUserId(Long user_id);
+    //List<UserCollection> findByUserAndSquishmallow(Long userId, Long squishmallowId);
+
 }
 
