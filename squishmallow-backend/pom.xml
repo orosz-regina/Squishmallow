@@ -12,19 +12,12 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>Squishmallow</name>
     <description>Squishmallow</description>
-    <url/>
-    <licenses>
-        <license/>
-    </licenses>
     <developers>
-        <developer/>
+        <developer>
+            <id>VT4U87</id>
+            <name>Orosz Regina</name>
+        </developer>
     </developers>
-    <scm>
-        <connection/>
-        <developerConnection/>
-        <tag/>
-        <url/>
-    </scm>
     <properties>
         <java.version>17</java.version>
         <start-class>squishmallow.SquishmallowApplication</start-class>

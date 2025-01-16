@@ -35,7 +35,7 @@ export class CollectionComponent implements OnInit {
         this.getCollection();
         this.getSquishmallows(); // Lekérjük az összes squishmallowt
       } else {
-        console.error('User ID is undefined');
+        console.error();
       }
     });
   }
@@ -48,11 +48,11 @@ export class CollectionComponent implements OnInit {
           console.log('Collection data:', data);  // Debugging: Ellenőrizd a visszaérkező adatokat
         },
         (error) => {
-          console.error('Error fetching collection:', error);
+          console.error(error);
         }
       );
     } else {
-      console.error('User ID is undefined');
+      console.error();
     }
   }
 
@@ -63,12 +63,12 @@ export class CollectionComponent implements OnInit {
         console.log('All squishmallows:', data);
       },
       (error) => {
-        console.error('Error fetching squishmallows:', error);
+        console.error(error);
       }
     );
   }
 
-  addToCollection(): void {
+  addToCollection(SquishmallowToAdd: any): void {
     if (this.squishmallowIdToAdd) {
       const userId = 1;  // Az aktuális felhasználó ID-ja (például globálisan tárolva vagy lekérdezhető)
       this.collectionService.addToCollection(userId, this.squishmallowIdToAdd).subscribe(
@@ -77,7 +77,7 @@ export class CollectionComponent implements OnInit {
           this.squishmallowIdToAdd = null;  // Reset input
         },
         (error) => {
-          console.error('Error adding to collection:', error);
+          console.error(error);
         }
       );
     }
@@ -90,7 +90,7 @@ export class CollectionComponent implements OnInit {
         this.collection = this.collection.filter(item => item.id !== collectionId);
       },
       (error) => {
-        console.error('Error deleting from collection:', error);
+        console.error(error);
       }
     );
   }

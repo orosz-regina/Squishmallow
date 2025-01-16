@@ -31,7 +31,7 @@ export class UserListComponent implements OnInit {
         this.users = data;
       },
       error => {
-        console.error('Error fetching users:', error);
+        console.error(error);
       }
     );
   }
@@ -50,7 +50,7 @@ export class UserListComponent implements OnInit {
         this.newUser = { username: '', email: '', password: ''};
       },
       error: (err) => {
-        console.error('Failed to add user', err);
+        console.error(err);
         alert(err.error);
       }
     });
@@ -62,7 +62,7 @@ export class UserListComponent implements OnInit {
         this.loadUsers();
       },
       error: (err) => {
-        console.error('Error deleting user', err);
+        console.error(err);
         alert('Hiba történt a felhasználó törlésekor.');
       }
     });
@@ -79,7 +79,7 @@ export class UserListComponent implements OnInit {
       this.currentUser = { ...user };
       this.isModalOpen = true;
     } else {
-      console.error('Invalid user data passed to modal');
+      console.error();
     }
   }
 
@@ -100,7 +100,7 @@ export class UserListComponent implements OnInit {
         this.closeModal();
       },
       error: (err) => {
-        console.error('Failed to update squishmallow', err);
+        console.error(err);
         alert('Hiba történt a frissítés során');
       }
     });

@@ -24,7 +24,7 @@ export class SquishmallowListComponent implements OnInit {
       this.currentSquishmallow = {...squishmallow};
       this.isModalOpen = true;
     } else {
-      console.error('Invalid squishmallow data');
+      console.error();
     }
   }
 
@@ -46,7 +46,7 @@ export class SquishmallowListComponent implements OnInit {
   deleteSquishmallow(id: number) {
     this.squishmallowService.checkUserCollection(id).subscribe({
       next: (data) => {
-        console.error("Benne van: ", data);
+        console.error(data);
         if (data) {
           alert("Ez a Squishmallow már szerepel legalább egy felhasználó gyűjteményében, ezért nem törölhető.");
         } else {
@@ -55,14 +55,14 @@ export class SquishmallowListComponent implements OnInit {
               this.squishmallows = this.squishmallows.filter(squishmallow => squishmallow.id !== id);
             },
             error: error => {
-              console.error("Failed to delete squishmallow", error);
+              console.error(error);
               alert("Failed to delete squishmallow");
             }
           });
         }
       },
       error: error => {
-        console.error("Error checking user collection", error);
+        console.error(error);
         alert("Hiba történt a felhasználói gyűjtemény ellenőrzése során.");
       }
     });
@@ -76,7 +76,7 @@ export class SquishmallowListComponent implements OnInit {
         this.newSquishmallow = {name: '', type: '', category: '', size: ''};
       },
       error: (err) => {
-        console.error('Failed to add squishmallow', err);
+        console.error(err);
         alert(err.error);
       }
     });
@@ -93,7 +93,7 @@ export class SquishmallowListComponent implements OnInit {
         this.closeModal();
       },
       error: (err) => {
-        console.error('Failed to update squishmallow', err);
+        console.error(err);
         alert('Hiba történt a frissítés során');
       }
     });

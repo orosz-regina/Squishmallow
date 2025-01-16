@@ -91,6 +91,12 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("An error occurred: " + e.getMessage());
         }
     }
+    @DeleteMapping("/{userId}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long userId) {
+        System.out.println("UserController: " + userId);
+        userService.deleteUser(userId); // Meghívja a törlési logikát a service osztályban
+        return ResponseEntity.noContent().build(); // Sikeres törlés
+    }
 
 
 }

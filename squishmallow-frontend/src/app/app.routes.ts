@@ -6,6 +6,7 @@ import { UserListComponent } from './_component/user/user-list/user-list.compone
 import {CollectionComponent} from './_component/user/user-collection/user-collection.component';
 
 
+
 export const routes: Routes = [
   { path: 'welcome', component: WelcomeComponent },
   { path: 'squishmallow', component: SquishmallowListComponent },
